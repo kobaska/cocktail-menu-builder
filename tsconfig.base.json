@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types": [
+        "libs/apps/cocktail-menu-builder-api/req-types/src/index.ts"
+      ],
+      "@cocktail-menu-builder/domain/entities/cocktail": [
+        "libs/domain/entities/cocktail/src/index.ts"
+      ],
+      "@cocktail-menu-builder/domain/gateways/cocktail/hardcoded": [
+        "libs/domain/gateways/cocktail/hardcoded/src/index.ts"
+      ],
+      "@cocktail-menu-builder/domain/use-cases/cocktail": [
+        "libs/domain/use-cases/cocktail/src/index.ts"
+      ],
+      "@cocktail-menu-builder/helpers/lambda": [
+        "libs/helpers/lambda/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

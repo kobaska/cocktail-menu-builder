@@ -1,0 +1,28 @@
+{
+  "name": "helpers-lambda",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/helpers/lambda/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/helpers/lambda",
+        "main": "libs/helpers/lambda/src/index.ts",
+        "tsConfig": "libs/helpers/lambda/tsconfig.lib.json",
+        "assets": ["libs/helpers/lambda/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/helpers/lambda/jest.config.ts"
+      }
+    }
+  }
+}

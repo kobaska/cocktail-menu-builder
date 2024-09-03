@@ -1,0 +1,28 @@
+{
+  "name": "domain-gateways-cocktail-hardcoded",
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/domain/gateways/cocktail/hardcoded/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/domain/gateways/cocktail/hardcoded",
+        "main": "libs/domain/gateways/cocktail/hardcoded/src/index.ts",
+        "tsConfig": "libs/domain/gateways/cocktail/hardcoded/tsconfig.lib.json",
+        "assets": ["libs/domain/gateways/cocktail/hardcoded/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts"
+      }
+    }
+  }
+}

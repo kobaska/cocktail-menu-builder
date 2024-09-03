@@ -1,0 +1,21 @@
+{
+  "name": "apps-cocktail-menu-builder-api-req-types",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/apps/cocktail-menu-builder-api/req-types/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/apps/cocktail-menu-builder-api/req-types",
+        "main": "libs/apps/cocktail-menu-builder-api/req-types/src/index.ts",
+        "tsConfig": "libs/apps/cocktail-menu-builder-api/req-types/tsconfig.lib.json",
+        "assets": ["libs/apps/cocktail-menu-builder-api/req-types/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}

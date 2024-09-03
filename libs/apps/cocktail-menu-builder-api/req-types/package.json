@@ -1,0 +1,8 @@
+{
+  "name": "@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types",
+  "version": "0.0.1",
+  "dependencies": {},
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "private": true
+}
