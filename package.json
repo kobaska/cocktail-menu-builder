@@ -2,7 +2,14 @@
   "name": "@cocktail-menu-builder/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint:all": "nx run-many -t=lint",
+    "lint": "nx affected:lint --fix",
+    "build:all": "nx run-many -t=build",
+    "build": "nx affected:build",
+    "test:all": "nx run-many -t=test",
+    "test": "nx affected:test"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",

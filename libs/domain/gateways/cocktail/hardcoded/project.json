@@ -23,6 +23,18 @@
       "options": {
         "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts"
       }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/domain/gateways/cocktail/hardcoded/**/*.ts"
+        ],
+        "maxWarnings": 0
+      }
     }
   }
 }

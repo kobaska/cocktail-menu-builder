@@ -16,6 +16,18 @@
         "generatePackageJson": true,
         "format": ["cjs"]
       }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/apps/cocktail-menu-builder-api/req-types/**/*.ts"
+        ],
+        "maxWarnings": 0
+      }
     }
   }
 }

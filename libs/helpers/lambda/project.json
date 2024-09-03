@@ -23,6 +23,18 @@
       "options": {
         "jestConfig": "libs/helpers/lambda/jest.config.ts"
       }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/helpers/lambda/**/*.ts"
+        ],
+        "maxWarnings": 0
+      }
     }
   }
 }

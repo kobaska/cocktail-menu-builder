@@ -1,11 +1,11 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function sendResponse<T extends Record<string, any>>({
   statusCode,
   body,
 }: {
   statusCode: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: T;
 }): APIGatewayProxyResult {
   return {

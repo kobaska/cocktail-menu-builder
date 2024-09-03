@@ -23,6 +23,18 @@
       "options": {
         "jestConfig": "libs/domain/use-cases/cocktail/jest.config.ts"
       }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/domain/use-cases/cocktail/**/*.ts"
+        ],
+        "maxWarnings": 0
+      }
     }
   }
 }
