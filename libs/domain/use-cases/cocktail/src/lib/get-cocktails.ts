@@ -5,7 +5,7 @@ export async function getCocktails(
     getCocktailsImplementor,
     ingredient
   }: {
-    ingredient?: string;
+    ingredient: string;
     getCocktailsImplementor: GetCocktailsImplementor;
   }
 ): Promise<CocktailResult[]> {
@@ -35,7 +35,7 @@ type CocktailResult = Pick<Cocktail,
  * Implementor for getting cocktails should filter the cocktails based on the ingredient provided.
  */
 export type GetCocktailsImplementor = (data: {
-  ingredient?: string
+  ingredient: string
 }) => Promise<
   Pick<Cocktail,
     | 'id'

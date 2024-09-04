@@ -1,6 +1,7 @@
 import { GetCocktailsResBody } from '@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types';
-import { getCocktailsFromHardcode } from '@cocktail-menu-builder/domain/gateways/cocktail/hardcoded';
+import { getCocktailsFromTheCocktailDB } from '@cocktail-menu-builder/domain/gateways/cocktail/thecocktaildb';
 import { getCocktails } from '@cocktail-menu-builder/domain/use-cases/cocktail';
+import { assertString } from "@cocktail-menu-builder/helpers/assertions";
 import { sendResponse } from '@cocktail-menu-builder/helpers/lambda';
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 
@@ -9,8 +10,13 @@ export async function handler(
 ): Promise<APIGatewayProxyResult> {
   try {
     const cocktails = await getCocktails({
-      getCocktailsImplementor: getCocktailsFromHardcode,
-      ingredient: event.queryStringParameters?.ingredient,
+      getCocktailsImplementor: getCocktailsFromTheCocktailDB,
+      ingredient: assertString({
+        object: event.queryStringParameters,
+        property: 'ingredient',
+        required: true,
+        requiredMessage: 'Ingredient is required'
+      }),
     });
 
     return sendResponse<GetCocktailsResBody>({

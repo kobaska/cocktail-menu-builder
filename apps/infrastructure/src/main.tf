@@ -199,6 +199,7 @@ resource "aws_api_gateway_deployment" "deployment" {
     module.rest_api_resource_cocktail_menu_builder_child_api_menu_delete_cocktails
   ]
   
+  # FIXME: This is a workaround to force a new deployment when anything in infrastructure changes
   variables = {
     deployed_at = "${timestamp()}"
   }
