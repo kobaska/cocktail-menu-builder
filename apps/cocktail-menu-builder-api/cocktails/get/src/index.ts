@@ -9,14 +9,15 @@ export async function handler(
   event: APIGatewayEvent,
 ): Promise<APIGatewayProxyResult> {
   try {
+    const ingredient = assertString({
+      object: event.queryStringParameters,
+      property: 'ingredient',
+      userMessage: 'Ingredient is required'
+    });
+    
     const cocktails = await getCocktails({
       getCocktailsImplementor: getCocktailsFromTheCocktailDB,
-      ingredient: assertString({
-        object: event.queryStringParameters,
-        property: 'ingredient',
-        required: true,
-        requiredMessage: 'Ingredient is required'
-      }),
+      ingredient,
     });
 
     return sendResponse<GetCocktailsResBody>({

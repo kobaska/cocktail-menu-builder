@@ -24,8 +24,7 @@
         "{workspaceRoot}/test-reports/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts"
       }
     },
     "lint": {

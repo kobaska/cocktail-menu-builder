@@ -17,10 +17,15 @@ export const fetchCocktailByIdFromTheCocktailDB: FetchCocktailByIdImplementor = 
     },
   );
 
-  const cocktails = await response.json() as TheCocktailDBCocktails;
+  try {
+    // When no cocktails are found, the API returns no body
+    const cocktails = await response.json() as TheCocktailDBCocktails;
 
-  if (cocktails.drinks?.length) {
-    return tranformCocktailToEntityModel(cocktails.drinks[0]);
+    if (cocktails?.drinks?.length) {
+      return tranformCocktailToEntityModel(cocktails.drinks[0]);
+    }
+  } catch (error) {
+    // Do nothing
   }
 
   return null;

@@ -4,7 +4,6 @@ import { TheCocktailDBCocktails } from './types';
 import { tranformCocktailToEntityModel } from './tranform-cocktail-to-entity-model';
 
 export const getCocktailsFromTheCocktailDB: GetCocktailsImplementor = async ({ ingredient }) => {
-
   const response = await fetch(
     `${THECOCKTAILDB_BASE_URL}/filter.php?i=${ingredient}`,
     {
@@ -17,8 +16,12 @@ export const getCocktailsFromTheCocktailDB: GetCocktailsImplementor = async ({ i
     },
   );
 
-  const cocktails = await response.json() as TheCocktailDBCocktails;
-
-  return cocktails.drinks.map(tranformCocktailToEntityModel);
+  try {
+    // When no cocktails are found, the API returns no body
+    const cocktails = await response.json() as TheCocktailDBCocktails;
+    return cocktails?.drinks?.map(tranformCocktailToEntityModel) || [];
+  } catch (error) {
+    return [];
+  }
 }
 

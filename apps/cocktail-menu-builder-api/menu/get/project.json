@@ -91,8 +91,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/cocktail-menu-builder-api/menu/get/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/cocktail-menu-builder-api/menu/get/jest.config.ts"
       }
     }
   }

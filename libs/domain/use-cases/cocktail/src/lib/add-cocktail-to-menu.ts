@@ -26,7 +26,6 @@ export async function addCocktailToMenu(
     throw new CustomError('Cocktail for provided id not found', 404);
   }
 
-
   const formattedCocktail: Cocktail = {
     id: cocktail.id,
     name: cocktail.name || '',
@@ -40,7 +39,7 @@ export async function addCocktailToMenu(
   }
 
   try {
-    return addCocktailToMenuImplementor(formattedCocktail);
+    return await addCocktailToMenuImplementor(formattedCocktail);
   } catch (error) {
     console.error(error);
     throw new Error('Failed to add cocktail to menu');

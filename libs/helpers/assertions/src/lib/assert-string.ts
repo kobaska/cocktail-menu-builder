@@ -5,8 +5,6 @@ export function assertString<T extends Record<string, any>>({
   object,
   property,
   userMessage,
-  required,
-  requiredMessage,
 }: {
   /** Object to check for key */
   object: T,
@@ -14,15 +12,12 @@ export function assertString<T extends Record<string, any>>({
   property: string,
   /** Message to return if property is not a string */
   userMessage?: string,
-  /** Message to return if property is required but not present */
-  required?: boolean;
-  requiredMessage?: string,
 }): string {
-  if (required && (!object || !(property in object))) {
-    throw new CustomError((requiredMessage || `${property} is required`), 400);
+  if ((!object || !(property in object))) {
+    throw new CustomError(userMessage || `${property} is required`, 400);
   }
 
-  if (object && object[property] && typeof object[property] === 'string') {
+  if (object[property] && typeof object[property] === 'string') {
     return object[property];
   }
 

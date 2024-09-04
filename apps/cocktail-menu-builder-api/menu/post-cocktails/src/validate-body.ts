@@ -7,6 +7,10 @@ export function validateBody(body: string): PostMenuCocktailReqBody {
 
     try {
         parsedBody = JSON.parse(body || '{}');
+
+        if (!parsedBody || typeof parsedBody !== 'object') {
+            throw new Error('Invalid JSON');
+        }
     } catch (error) {
         throw new CustomError('Invalid JSON', 400);
     }
@@ -15,15 +19,14 @@ export function validateBody(body: string): PostMenuCocktailReqBody {
         id: assertString({
             object: parsedBody,
             property: 'id',
-            required: true,
         }),
-        ...('name' in parsedBody) && {
+        ...('name' in parsedBody) && parsedBody.name && {
             name: assertString({
                 object: parsedBody,
                 property: 'name',
             }),
         },
-        ...('price' in parsedBody) && {
+        ...('price' in parsedBody) && parsedBody.price !== null && {
             price: assertNumber({
                 object: parsedBody,
                 property: 'price',

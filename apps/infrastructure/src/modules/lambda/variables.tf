@@ -3,6 +3,11 @@ variable "retention_in_days" {
   default = 14
 }
 
+variable "timeout" {
+  type    = number
+  default = 29
+}
+
 variable "name" {
   type = string
 }

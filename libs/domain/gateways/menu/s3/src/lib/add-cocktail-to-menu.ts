@@ -17,6 +17,7 @@ export const addCocktailToMenuS3: AddCocktailToMenuImplementor = async (cocktail
   }
 
   const s3 = new S3();
+  
   await s3.putObject({
     Bucket: 'cocktail-storage',
     Key: 'menu.json',

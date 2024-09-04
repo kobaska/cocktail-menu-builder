@@ -8,7 +8,7 @@ export async function getMenu(
   }
 ): Promise<Menu> {
   try {
-    return getMenuImplementor();
+    return await getMenuImplementor();
   } catch (error) {
     console.error(error);
     throw new Error('Failed to fetch menu');

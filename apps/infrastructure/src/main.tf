@@ -2,10 +2,12 @@ provider "aws" {
   region = "ap-southeast-2"
 }
 
+# S3 Bucket for storing cocktail menu data
 resource "aws_s3_bucket" "cocktail_storage" {
   bucket = "cocktail-storage"
 }
 
+# Lambda functions used by the cocktail menu builder API
 module "lambda_cocktail_menu_builder_api_cocktails_get" {
   source = "./modules/lambda"
 
@@ -110,6 +112,7 @@ module "lambda_cocktail_menu_builder_api_menu_delete_cocktails" {
   }
 }
 
+# API Gateway with resources and methods for the cocktail menu builder
 module "rest_api_cocktail_menu_builder" {
   source = "./modules/api-gateway/rest-api"
 

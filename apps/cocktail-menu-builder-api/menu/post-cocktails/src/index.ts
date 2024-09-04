@@ -12,7 +12,7 @@ export async function handler(
   try {
     const cocktail = validateBody(event.body);
   
-    const menu = await addCocktailToMenu({
+    const updatedCocktail = await addCocktailToMenu({
       cocktail,
       addCocktailToMenuImplementor: addCocktailToMenuS3,
       fetchCocktailByIdImplementor: fetchCocktailByIdFromTheCocktailDB
@@ -20,7 +20,7 @@ export async function handler(
   
     return sendResponse<PostMenuCocktailResBody>({
       statusCode: 200,
-      body: menu
+      body: updatedCocktail
     });
   } catch (err) {
     return sendResponse({

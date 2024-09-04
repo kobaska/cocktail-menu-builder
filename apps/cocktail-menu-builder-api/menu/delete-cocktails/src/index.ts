@@ -12,7 +12,6 @@ export async function handler(
     const cocktailId = assertString({
       object: event.pathParameters,
       property: 'cocktailId',
-      required: true,
     });
     
     await removeCocktailFromMenu({

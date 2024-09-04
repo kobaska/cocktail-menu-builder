@@ -54,7 +54,7 @@ resource "aws_lambda_function" "lambda_function" {
   filename         = var.filename
   handler          = var.handler
   source_code_hash = filebase64sha256(var.filename)
-  timeout = 29000
+  timeout = var.timeout
   depends_on = [
     aws_iam_role_policy_attachment.policy_attachment,
     aws_cloudwatch_log_group.cloudwatch_log_group,
