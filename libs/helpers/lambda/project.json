@@ -19,7 +19,10 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}",
+        "{workspaceRoot}/test-reports/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/helpers/lambda/jest.config.ts"
       }

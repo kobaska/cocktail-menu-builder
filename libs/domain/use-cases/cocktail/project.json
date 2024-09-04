@@ -19,7 +19,10 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}",
+        "{workspaceRoot}/test-reports/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "libs/domain/use-cases/cocktail/jest.config.ts"
       }

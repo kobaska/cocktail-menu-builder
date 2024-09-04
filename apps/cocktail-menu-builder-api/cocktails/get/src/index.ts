@@ -7,10 +7,6 @@ import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 export async function handler(
   event: APIGatewayEvent,
 ): Promise<APIGatewayProxyResult> {
-  // verify inputs
-  // TODO
-
-  // fetch cocktails
   const cocktails = await getCocktails({
     getCocktailsImplementor: getCocktailsFromHardcode,
     query: {

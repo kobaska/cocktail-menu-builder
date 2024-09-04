@@ -19,9 +19,13 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}",
+        "{workspaceRoot}/test-reports/{projectRoot}"
+      ],
       "options": {
-        "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts"
+        "jestConfig": "libs/domain/gateways/cocktail/hardcoded/jest.config.ts",
+        "passWithNoTests": true
       }
     },
     "lint": {

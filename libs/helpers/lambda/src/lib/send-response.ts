@@ -4,14 +4,16 @@ import { APIGatewayProxyResult } from 'aws-lambda';
 export function sendResponse<T extends Record<string, any>>({
   statusCode,
   body,
+  headers,
 }: {
   statusCode: number;
+  headers?: Record<string, string>;
   body?: T;
 }): APIGatewayProxyResult {
   return {
     statusCode,
     body: body ? JSON.stringify(body) : '',
-    headers: {
+    headers: headers || {
       'Content-Type': 'application/json',
     },
   };

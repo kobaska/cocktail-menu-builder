@@ -10,17 +10,26 @@ export async function getCocktails(
     getCocktailsImplementor: GetCocktailsImplementor;
   }
 ): Promise<GetCocktailsResBody> {
-  const cocktails = await getCocktailsImplementor({ ingredient });
+  let cocktails = [];
 
-  return {
-    data: cocktails.map(cocktail => ({
-      id: cocktail.id,
-      name: cocktail.name,
-      price: null
-    })),
-  };
+  try {
+    cocktails = await getCocktailsImplementor({ ingredient });
+
+    return {
+      data: cocktails.map(cocktail => ({
+        id: cocktail.id,
+        name: cocktail.name,
+        price: null
+      })),
+    };
+  } catch (error) {
+    throw new Error('Failed to fetch cocktails');
+  }
 }
 
+/**
+ * Implementor for getting cocktails should filter the cocktails based on the ingredient provided.
+ */
 export type GetCocktailsImplementor = (data: {
   ingredient?: string
 }) => Promise<
