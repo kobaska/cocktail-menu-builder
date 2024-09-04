@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "setup:infrastructure": "nx run-many -t=initialise",
+    "deploy": "nx run-many -t=deploy",
     "lint:all": "nx run-many -t=lint",
     "lint": "nx affected:lint --fix",
     "build:all": "nx run-many -t=build",
@@ -36,6 +38,7 @@
     "@angular/cli": "~18.2.0",
     "@angular/compiler-cli": "~18.2.0",
     "@angular/language-service": "~18.2.0",
+    "@nx-extend/terraform": "^7.0.2",
     "@nx/angular": "19.6.4",
     "@nx/cypress": "19.6.4",
     "@nx/esbuild": "19.6.4",

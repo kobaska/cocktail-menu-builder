@@ -1,0 +1,80 @@
+{
+  "name": "infrastructure",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/infrastructure/src",
+  "targets": {
+    "build": {
+      "executor": "@nx-extend/terraform:plan",
+      "options": {
+        "planFile": "defaultplan",
+        "ciMode": true
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "dependencies": true
+        }
+      ]
+    },
+    "initialise": {
+      "executor": "@nx-extend/terraform:init",
+      "options": {
+        "ciMode": true,
+        "upgrade": false,
+        "migrateState": false
+      }
+    },
+    "providers": {
+      "executor": "@nx-extend/terraform:providers",
+      "options": {
+        "ciMode": true,
+        "lock": true
+      }
+    },
+    "format": {
+      "executor": "@nx-extend/terraform:fmt",
+      "options": {
+        "ciMode": true,
+        "formatWrite": false
+      }
+    },
+    "deploy": {
+      "executor": "@nx-extend/terraform:apply",
+      "options": {
+        "planFile": "defaultplan",
+        "ciMode": true,
+        "autoApproval": false
+      }
+    },
+    "destroy": {
+      "executor": "@nx-extend/terraform:destroy",
+      "options": {
+        "ciMode": true,
+        "autoApproval": false
+      }
+    },
+    "validate": {
+      "executor": "@nx-extend/terraform:validate",
+      "options": {
+        "ciMode": true
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "dependencies": true
+        }
+      ]
+    },
+    "test": {
+      "executor": "@nx-extend/terraform:test",
+      "options": {
+        "ciMode": true
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": [
+    "cocktail-menu-builder-api-cocktails-get"
+  ]
+}
