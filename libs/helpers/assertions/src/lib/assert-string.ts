@@ -18,11 +18,11 @@ export function assertString<T extends Record<string, any>>({
   required?: boolean;
   requiredMessage?: string,
 }): string {
-  if (required && !(property in object)) {
+  if (required && (!object || !(property in object))) {
     throw new CustomError((requiredMessage || `${property} is required`), 400);
   }
 
-  if (object[property] && typeof object[property] === 'string') {
+  if (object && object[property] && typeof object[property] === 'string') {
     return object[property];
   }
 

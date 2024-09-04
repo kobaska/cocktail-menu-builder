@@ -18,11 +18,11 @@ export function assertNumber<T extends Record<string, any>>({
   required?: boolean;
   requiredMessage?: string,
 }): number {
-  if (required && !(property in object)) {
+  if (required && (!object || !(property in object) )) {
     throw new CustomError(requiredMessage || `${property} is required`, 400);
   }
 
-  if (object[property] && typeof object[property] === 'number') {
+  if (object && object[property] && typeof object[property] === 'number') {
     return object[property];
   }
 
