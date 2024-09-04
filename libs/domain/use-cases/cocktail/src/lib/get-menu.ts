@@ -1,4 +1,3 @@
-import { GetMenuResBody } from '@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types';
 import { Menu } from '@cocktail-menu-builder/domain/entities/cocktail';
 
 export async function getMenu(
@@ -7,7 +6,7 @@ export async function getMenu(
   }: {
     getMenuImplementor: GetMenuImplementor;
   }
-): Promise<GetMenuResBody> {
+): Promise<Menu> {
   try {
     return getMenuImplementor();
   } catch (error) {
@@ -16,7 +15,4 @@ export async function getMenu(
   }
 }
 
-/**
- * Implementor for getting cocktails should filter the cocktails based on the ingredient provided.
- */
 export type GetMenuImplementor = () => Promise<Menu>;

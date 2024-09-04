@@ -7,15 +7,22 @@ import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 export async function handler(
   event: APIGatewayEvent,
 ): Promise<APIGatewayProxyResult> {
-  const cocktails = await getCocktails({
-    getCocktailsImplementor: getCocktailsFromHardcode,
-    query: {
+  try {
+    const cocktails = await getCocktails({
+      getCocktailsImplementor: getCocktailsFromHardcode,
       ingredient: event.queryStringParameters?.ingredient,
-    },
-  });
+    });
 
-  return sendResponse<GetCocktailsResBody>({
-    statusCode: 200,
-    body: cocktails
-  });
+    return sendResponse<GetCocktailsResBody>({
+      statusCode: 200,
+      body: cocktails
+    });
+  } catch (err) {
+    return sendResponse({
+      statusCode: err.status || 500,
+      body: {
+        message: err.message
+      }
+    });
+  }
 }

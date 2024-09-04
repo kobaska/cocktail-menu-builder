@@ -1,18 +1,25 @@
 import { GetMenuResBody } from '@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types';
+import { getMenuS3 } from '@cocktail-menu-builder/domain/gateways/menu/s3';
 import { getMenu } from '@cocktail-menu-builder/domain/use-cases/cocktail';
 import { sendResponse } from '@cocktail-menu-builder/helpers/lambda';
-import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
-import { getMenuFromS3 } from '@cocktail-menu-builder/domain/gateways/menu/s3';
+import { APIGatewayProxyResult } from 'aws-lambda';
 
-export async function handler(
-  event: APIGatewayEvent,
-): Promise<APIGatewayProxyResult> {
-  const menu = await getMenu({
-    getMenuImplementor: getMenuFromS3
-  });
-
-  return sendResponse<GetMenuResBody>({
-    statusCode: 200,
-    body: menu
-  });
+export async function handler(): Promise<APIGatewayProxyResult> {
+  try {
+    const menu = await getMenu({
+      getMenuImplementor: getMenuS3
+    });
+  
+    return sendResponse<GetMenuResBody>({
+      statusCode: 200,
+      body: menu
+    });
+  } catch (err) {
+    return sendResponse({
+      statusCode: err.status || 500,
+      body: {
+        message: err.message
+      }
+    });
+  }
 }

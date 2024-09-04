@@ -30,6 +30,12 @@
       "@cocktail-menu-builder/domain/use-cases/cocktail": [
         "libs/domain/use-cases/cocktail/src/index.ts"
       ],
+      "@cocktail-menu-builder/helpers/assertions": [
+        "libs/helpers/assertions/src/index.ts"
+      ],
+      "@cocktail-menu-builder/helpers/error-handlers": [
+        "libs/helpers/error-handlers/src/index.ts"
+      ],
       "@cocktail-menu-builder/helpers/lambda": [
         "libs/helpers/lambda/src/index.ts"
       ]

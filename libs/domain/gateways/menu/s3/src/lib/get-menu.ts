@@ -2,7 +2,7 @@ import { Menu } from '@cocktail-menu-builder/domain/entities/cocktail';
 import { GetMenuImplementor } from '@cocktail-menu-builder/domain/use-cases/cocktail';
 import S3, { GetObjectOutput, GetObjectRequest } from 'aws-sdk/clients/s3';
 
-export const getMenuFromS3: GetMenuImplementor = async () => {
+export const getMenuS3: GetMenuImplementor = async () => {
   const s3 = new S3();
 
   const params: GetObjectRequest = {

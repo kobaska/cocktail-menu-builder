@@ -4,9 +4,7 @@ describe('getCocktails', () => {
   it('should work when no cocktails are returned', async () => {
     const cocktails = await getCocktails({
       getCocktailsImplementor: async () => [],
-      query: {
-        ingredient: 'query'
-      }
+      ingredient: 'query'
     });
 
     expect(cocktails).toEqual([]);
@@ -27,16 +25,14 @@ describe('getCocktails', () => {
           }];
         }
       },
-      query: {
-        ingredient: 'query'
-      }
+      ingredient: 'query'
     });
 
     expect(cocktails).toEqual([{
-        id: 'filteredId',
-        name: 'filteredName',
-        price: null
-      }]);
+      id: 'filteredId',
+      name: 'filteredName',
+      price: null
+    }]);
   });
 
   it('should not leak internal error information', async () => {
@@ -45,9 +41,7 @@ describe('getCocktails', () => {
         getCocktailsImplementor: async () => {
           throw new Error('Invalid database password');
         },
-        query: {
-          ingredient: 'query'
-        }
+        ingredient: 'query'
       })).rejects.toThrow('Failed to fetch cocktails');
   });
 });
