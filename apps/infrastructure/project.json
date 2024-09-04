@@ -75,6 +75,7 @@
   },
   "tags": [],
   "implicitDependencies": [
-    "cocktail-menu-builder-api-cocktails-get"
+    "cocktail-menu-builder-api-cocktails-get",
+    "cocktail-menu-builder-api-menu-get"
   ]
 }

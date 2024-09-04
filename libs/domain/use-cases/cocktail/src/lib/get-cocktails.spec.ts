@@ -1,4 +1,3 @@
-import exp = require('constants');
 import { getCocktails } from './get-cocktails';
 
 describe('getCocktails', () => {
@@ -10,9 +9,7 @@ describe('getCocktails', () => {
       }
     });
 
-    expect(cocktails).toEqual({
-      data: []
-    });
+    expect(cocktails).toEqual([]);
   });
 
   it('should work when cocktails are returned', async () => {
@@ -35,13 +32,11 @@ describe('getCocktails', () => {
       }
     });
 
-    expect(cocktails).toEqual({
-      data: [{
+    expect(cocktails).toEqual([{
         id: 'filteredId',
         name: 'filteredName',
         price: null
-      }]
-    });
+      }]);
   });
 
   it('should not leak internal error information', async () => {

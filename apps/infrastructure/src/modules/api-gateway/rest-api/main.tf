@@ -23,7 +23,7 @@ module "rest_api_resources" {
 
 resource "aws_lambda_permission" "apigw" {
   for_each = var.lambdas_to_add_permissions
-  statement_id  = "AllowAPIGatewayInvoke"
+  statement_id_prefix   = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = each.value.lambda_name
   principal     = "apigateway.amazonaws.com"

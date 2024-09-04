@@ -15,14 +15,13 @@ export async function getCocktails(
   try {
     cocktails = await getCocktailsImplementor({ ingredient });
 
-    return {
-      data: cocktails.map(cocktail => ({
+    return cocktails.map(cocktail => ({
         id: cocktail.id,
         name: cocktail.name,
         price: null
-      })),
-    };
+      }));
   } catch (error) {
+    console.error(error);
     throw new Error('Failed to fetch cocktails');
   }
 }

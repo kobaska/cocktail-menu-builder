@@ -4,9 +4,7 @@ export type GetCocktailsReqQuery = {
   ingredient?: string;
 }
 
-export type GetCocktailsResBody = {
-  data: CocktailBody[];
-}
+export type GetCocktailsResBody = CocktailBody[];
 
 type CocktailBody = Pick<Cocktail,
   | 'id'

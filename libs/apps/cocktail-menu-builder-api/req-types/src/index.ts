@@ -1,1 +1,2 @@
-export * from './lib/get-cocktails.req-type';
+export * from './lib/get-cocktails';
+export * from './lib/get-menu';

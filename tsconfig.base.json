@@ -24,6 +24,9 @@
       "@cocktail-menu-builder/domain/gateways/cocktail/hardcoded": [
         "libs/domain/gateways/cocktail/hardcoded/src/index.ts"
       ],
+      "@cocktail-menu-builder/domain/gateways/menu/s3": [
+        "libs/domain/gateways/menu/s3/src/index.ts"
+      ],
       "@cocktail-menu-builder/domain/use-cases/cocktail": [
         "libs/domain/use-cases/cocktail/src/index.ts"
       ],

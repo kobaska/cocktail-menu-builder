@@ -1,13 +1,14 @@
 /* eslint-disable */
 export default {
-  displayName: 'domain-gateways-cocktail-hardcoded',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'cocktail-menu-builder-api-menu-get',
+  preset: '../../../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../../../../coverage/libs/domain//gateways/cocktail/hardcoded',
+  coverageDirectory:
+    '../../../../coverage/apps/cocktail-menu-builder-api/menu/get',
   collectCoverage: true,
   coverageReporters: [
     'lcov',
@@ -32,7 +33,7 @@ export default {
       'jest-junit',
       {
         outputDirectory: './test-reports',
-        outputName: '/libs/domain/gateways/cocktail/hardcoded/jest.xml',
+        outputName: '/apps/cocktail-menu-builder-api/menu/get/jest.xml',
       },
     ],
   ],
