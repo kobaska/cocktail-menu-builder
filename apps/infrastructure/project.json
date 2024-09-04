@@ -5,6 +5,34 @@
   "sourceRoot": "apps/infrastructure/src",
   "targets": {
     "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "color": true,
+        "commands": [
+          {
+            "command": "nx refreshModules infrastructure"
+          },
+          {
+            "command": "nx plan infrastructure"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "refreshModules": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/infrastructure/src",
+        "color": true,
+        "commands": [
+          {
+            "command": "terraform get --update=true"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "plan": {
       "executor": "@nx-extend/terraform:plan",
       "options": {
         "planFile": "defaultplan",
@@ -77,6 +105,7 @@
   "implicitDependencies": [
     "cocktail-menu-builder-api-cocktails-get",
     "cocktail-menu-builder-api-menu-get",
-    "cocktail-menu-builder-api-menu-post-cocktails"
+    "cocktail-menu-builder-api-menu-post-cocktails",
+    "cocktail-menu-builder-api-menu-delete-cocktails"
   ]
 }
