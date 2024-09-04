@@ -1,0 +1,95 @@
+{
+  "name": "cocktail-menu-builder-api-menu-delete-cocktails",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cocktail-menu-builder-api/menu/delete-cocktails/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "package": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/cocktail-menu-builder-api/menu/delete-cocktails",
+        "format": ["cjs"],
+        "bundle": true,
+        "main": "apps/cocktail-menu-builder-api/menu/delete-cocktails/src/index.ts",
+        "tsConfig": "apps/cocktail-menu-builder-api/menu/delete-cocktails/tsconfig.app.json",
+        "assets": [
+          "apps/cocktail-menu-builder-api/menu/delete-cocktails/src/assets"
+        ],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "installDeps": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/apps/cocktail-menu-builder-api/menu/delete-cocktails",
+        "color": true,
+        "commands": [
+          {
+            "command": "npm i"
+          }
+        ]
+      }
+    },
+    "zipFiles": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/apps/cocktail-menu-builder-api/menu/delete-cocktails",
+        "color": true,
+        "commands": [
+          {
+            "command": "zip -rq dist.zip ."
+          }
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "color": true,
+        "commands": [
+          {
+            "command": "nx package cocktail-menu-builder-api-menu-delete-cocktails"
+          },
+          {
+            "command": "nx installDeps cocktail-menu-builder-api-menu-delete-cocktails"
+          },
+          {
+            "command": "nx zipFiles cocktail-menu-builder-api-menu-delete-cocktails"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/cocktail-menu-builder-api/menu/delete-cocktails/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

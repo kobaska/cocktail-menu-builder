@@ -77,6 +77,39 @@ module "lambda_cocktail_menu_builder_api_menu_post_cocktails" {
   }
 }
 
+module "lambda_cocktail_menu_builder_api_menu_delete_cocktails" {
+  source = "./modules/lambda"
+
+  name     = "cocktail-menu-builder-api-menu-delete-cocktails"
+  filename = "${path.module}/../../../dist/apps/cocktail-menu-builder-api/menu/delete-cocktails/dist.zip"
+  policy_statements = {
+    logging = {
+      effect = "Allow"
+      actions = [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ]
+      resources = [
+        "arn:aws:logs:*:*:*"
+      ]
+    }
+    s3_access = {
+      effect = "Allow"
+      actions = [
+        "s3:ListBucket",
+        "s3:GetObjectAcl",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+      ]
+      resources = [
+        "${aws_s3_bucket.cocktail_storage.arn}/*",
+      ]
+    }
+  }
+}
+
 module "rest_api_cocktail_menu_builder" {
   source = "./modules/api-gateway/rest-api"
 
@@ -91,6 +124,9 @@ module "rest_api_cocktail_menu_builder" {
     }
     cocktail_menu_builder_api_menu_post_cocktails = {
       lambda_name = module.lambda_cocktail_menu_builder_api_menu_post_cocktails.function_name
+    }
+    cocktail_menu_builder_api_menu_delete_cocktails = {
+      lambda_name = module.lambda_cocktail_menu_builder_api_menu_delete_cocktails.function_name
     }
   }
   resources = {
@@ -118,7 +154,7 @@ module "rest_api_cocktail_menu_builder" {
 }
 
 # TODO Clean up this module by adding this as a child_resources variable inside the module 
-module "rest_api_cocktail_menu_builder_child_resources" {
+module "rest_api_resource_cocktail_menu_builder_child_api_menu_post_cocktails" {
   source = "./modules/api-gateway/resource"
 
   parent_id = module.rest_api_cocktail_menu_builder.resource_ids.menu
@@ -135,12 +171,35 @@ module "rest_api_cocktail_menu_builder_child_resources" {
   }
 }
 
+module "rest_api_resource_cocktail_menu_builder_child_api_menu_delete_cocktails" {
+  source = "./modules/api-gateway/resource"
+
+  parent_id = module.rest_api_resource_cocktail_menu_builder_child_api_menu_post_cocktails.resource_id
+  path_part = "{cocktailId}"
+  rest_api_id = module.rest_api_cocktail_menu_builder.rest_api_id
+
+  methods = {
+    post = {
+      http_method   = "DELETE"
+      authorization = "NONE"
+      lambda_uri    = module.lambda_cocktail_menu_builder_api_menu_delete_cocktails.invoke_arn
+      rest_api_id = module.rest_api_cocktail_menu_builder.rest_api_id
+    }
+  }
+}
+
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = module.rest_api_cocktail_menu_builder.rest_api_id
   stage_name  = "production"
 
+  
   depends_on = [
     module.rest_api_cocktail_menu_builder,
-    module.rest_api_cocktail_menu_builder_child_resources
+    module.rest_api_resource_cocktail_menu_builder_child_api_menu_post_cocktails,
+    module.rest_api_resource_cocktail_menu_builder_child_api_menu_delete_cocktails
   ]
+  
+  variables = {
+    deployed_at = "${timestamp()}"
+  }
 }

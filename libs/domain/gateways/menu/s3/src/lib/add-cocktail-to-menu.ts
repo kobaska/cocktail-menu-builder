@@ -1,13 +1,20 @@
 import { Cocktail } from '@cocktail-menu-builder/domain/entities/cocktail';
 import { AddCocktailToMenuImplementor } from '@cocktail-menu-builder/domain/use-cases/cocktail';
+import S3 from 'aws-sdk/clients/s3';
 import { getMenuS3 } from './get-menu';
-import S3, { GetObjectOutput, GetObjectRequest } from 'aws-sdk/clients/s3';
 
 export const addCocktailToMenuS3: AddCocktailToMenuImplementor = async (cocktail: Cocktail) => {
   const menu = await getMenuS3();
 
-  // NOTE: We are intentionally allowing the same cocktail to be added multiple times
-  menu.cocktails.push(cocktail);
+  // check if the cocktail is already in the menu
+  const index = menu.cocktails.findIndex(c => c.id === cocktail.id);
+
+  // If the cocktail is in the menu, update it
+  if (index > -1) {
+    menu.cocktails[index] = cocktail;
+  } else {
+    menu.cocktails.push(cocktail);
+  }
 
   const s3 = new S3();
   await s3.putObject({

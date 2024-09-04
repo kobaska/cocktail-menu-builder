@@ -29,9 +29,9 @@ export async function addCocktailToMenu(
 
   const formattedCocktail: Cocktail = {
     id: cocktail.id,
+    name: cocktail.name || '',
     // If price is omitted, it should remain null.
     price: cocktail.price || null,
-    name: cocktail.name || '',
   };
 
   // If the cocktail does not have a name, use the persisted cocktail's name

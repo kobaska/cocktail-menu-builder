@@ -2,6 +2,9 @@
 
 This is a cocktail menu app for restaurants to build their own cocktail menu out from a selection of cocktails from https://www.thecocktaildb.com/api.php.
 
+Deployed API of this application can be tested at
+https://8txduk3to2.execute-api.ap-southeast-2.amazonaws.com/production/cocktails
+
 ## Instructions
 
 ### Setup
@@ -15,21 +18,10 @@ https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
 3. Setup AWS credentials
 
+4. Install node dependencies `npm i`
 
 ### Run Locally
 TODO
-
-### Add new Lambdas
-
-1. Add relevant infrastructure in the apps/infrastructure project
-
-2. Add lambda handler project by running:
-nx g @nx/node:application [project path(excluding apps dir)]
-e.g. `nx g @nx/node:application cocktail-menu-builder-api/cocktails/get`
-
-3. Copy the project name of the lambda handler project from the project.json file
-
-4. Add the above copied name to "implicitDependencies" in the apps/infrastructure project
 
 ### Deployment
 
@@ -65,10 +57,6 @@ e.g. `nx g @nx/node:application cocktail-menu-builder-api/cocktails/get`
 - Local serving of lambdas (Localstack would be ideal)
 - Tests
 - UI
-- Storage of menu selection
-- Menu endpoints
-- Error states
-- Move to a real database(potentially dynamo for cost benefits)
-- Split Terraform sections into separate modules
+- Move API Gateway child resources to API Gateway resources module
 - Store Terraform state in cloud to allow to avoid clashes when more than one developer attempts to deploy
 - CI/CD
