@@ -1,0 +1,29 @@
+{
+  "name": "helpers-error-handlers",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/helpers/error-handlers/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/helpers/error-handlers",
+        "main": "libs/helpers/error-handlers/src/index.ts",
+        "tsConfig": "libs/helpers/error-handlers/tsconfig.lib.json",
+        "assets": ["libs/helpers/error-handlers/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/helpers/error-handlers/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
