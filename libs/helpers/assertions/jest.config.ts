@@ -9,6 +9,12 @@ export default {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../../coverage/libs/helpers/assertions',
   collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/node_modules/**',
+    '!**/jest.config.ts',
+    '!**/index.ts',
+  ],
   coverageReporters: [
     'lcov',
     [

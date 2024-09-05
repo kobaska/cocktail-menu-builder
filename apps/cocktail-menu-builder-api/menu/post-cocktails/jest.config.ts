@@ -10,6 +10,11 @@ export default {
   coverageDirectory:
     '../../../../coverage/apps/cocktail-menu-builder-api/menu/post-cocktails',
   collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/node_modules/**',
+    '!**/jest.config.ts',
+  ],
   coverageReporters: [
     'lcov',
     [

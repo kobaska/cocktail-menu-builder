@@ -57,7 +57,6 @@ Below commands will only build/test/deploy the affected projects. If you are run
 ## Yet to complete
 
 - Local serving of lambdas (Localstack would be ideal)
-- Tests
 - UI
 - Move API Gateway child resources to API Gateway resources module
 - Store Terraform state in cloud to allow to avoid clashes when more than one developer attempts to deploy
@@ -76,6 +75,9 @@ Helpers/Utils `libs/helpers`
 -  **S3 and Lambda**:  Used for cost-effective infrastructure management for a temp project
 -  **Nx Monorepo**: Employed to streamline all the moving parts of the application to simplify development and deployments. If you're not familiar with Nx, the large number of files might seem overwhelming. Typically, I create a base configuration file to extend from and simplify the setup. However, for this project, I opted for the standard Nx configuration with some modifications to save time.
 - **Clean Architecture**: I only spend very little time reading up on clean architecture concepts. Attempted to split layers accordingly, but the naming conventions might not be the standard ones.
+
+Also considered creating entities as abstract classes with functions such findCocktailById as an abstract method on Cocktail entity. This way the implementors/gateways can extend the entity class and implement the abstract methods. Didn't get time to experiment to see the pros and cons. I'll give it a go over the weekend to see how that would look. I can see one con being the entity class with methods which won't be used by the use case being added in the package unneccessarily.
+
 - **Local Serve** I have been using LocalStack for emulating AWS infrastructure locally. I found out they removed free tier recently, hence you won't be able to run it locally. Please follow the instructions provided above to deploy to your own AWS account.
 - **Lambda Structure**: Each individual lambda is split out to separate apps in here. This is totally unnecessary(so is the whole splitting of gateways and use cases) for a smaller project such as this. Purely went down this path to experiment on clean architecture and learn some different approaches in Terraform structuring. 
 Splitting it per function or smaller group of functions does really help speed up CI/CD pipelines, but they are only needed for bigger projects.
