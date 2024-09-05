@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+  &.primary {
+    background-color: #6b92a4;
+    color: white;
+  }
+  &.warn {
+    background-color: #f44336;
+    color: white;
+  }
+}
+
+.title {
+  margin: 30px 0;
+  text-align: center;
+  color: #6b92a4;
+  font-family: "GillSans";
+  font-size: 40px !important;
+}
+
+.container {
+  width: 400px;
+  justify-content: center;
+  border: 1px solid #6b92a4;
+  margin: 10px;
+  border-radius: 5px;
+  height: calc(100vh - 40px);
+  overflow: scroll;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  margin: 16px 0 21px 0;
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 400px;
+  padding: 10px 0px;
+  border-top: 1px solid #6b92a4;
+  border-radius: 5px;
+}

@@ -19,9 +19,14 @@ export async function handler(
       removeCocktailFromMenuImplementor: removeCocktailFromMenuS3
     });
   
-    return sendResponse<PostMenuCocktailResBody>({
+    return sendResponse({
       statusCode: 204,
-      body: undefined
+      body: undefined,
+      headers: {
+        // Not to be used in production if the data is sensitive
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     });
   } catch (err) {
     return sendResponse({

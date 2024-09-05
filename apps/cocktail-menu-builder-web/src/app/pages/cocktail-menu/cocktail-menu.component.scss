@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-list {
+  font-family: fantasy;
+  margin-bottom: 50px;
+
+  .menu-list-item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #6b92a4;
+      color: white;
+    }
+
+    .delete-btn {
+      font-size: 24px;
+      background-color: transparent;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.print-btn {
+  margin: 20px;
+  padding: 10px;
+  background-color: #6b92a4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cocktail-detail {
+  display: flex;
+  gap: 8px;
+
+  &.printing {
+    flex: 1;
+    justify-content: space-between;
+  }
+}

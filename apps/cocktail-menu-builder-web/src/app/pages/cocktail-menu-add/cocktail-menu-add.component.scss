@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ingredient-select {
+  padding-left: 20px;
+}
+
+.menu-list {
+  font-family: fantasy;
+  margin-bottom: 50px;
+
+  .menu-list-item {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+    cursor: pointer;
+
+  
+    .add-btn {
+      font-size: 16px;
+
+      &:hover {
+        color: white;
+        background-color: green;
+      }
+    }
+  }
+}
+
+.price-input {
+  width: 50px;
+  height: 24px;
+  margin-right: 10px;
+}

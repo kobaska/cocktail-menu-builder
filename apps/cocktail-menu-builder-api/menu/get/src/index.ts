@@ -12,7 +12,12 @@ export async function handler(): Promise<APIGatewayProxyResult> {
   
     return sendResponse<GetMenuResBody>({
       statusCode: 200,
-      body: menu
+      headers: {
+        // Not to be used in production if the data is sensitive
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      body: menu,
     });
   } catch (err) {
     return sendResponse({

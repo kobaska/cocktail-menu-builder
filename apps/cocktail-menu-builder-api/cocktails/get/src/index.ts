@@ -22,7 +22,12 @@ export async function handler(
 
     return sendResponse<GetCocktailsResBody>({
       statusCode: 200,
-      body: cocktails
+      body: cocktails,
+      headers: {
+        // Not to be used in production if the data is sensitive
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     });
   } catch (err) {
     return sendResponse({

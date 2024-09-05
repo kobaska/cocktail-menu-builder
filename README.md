@@ -57,14 +57,15 @@ Below commands will only build/test/deploy the affected projects. If you are run
 ## Yet to complete
 
 - Local serving of lambdas (Localstack would be ideal)
-- UI
-- Move API Gateway child resources to API Gateway resources module
 - Store Terraform state in cloud to allow to avoid clashes when more than one developer attempts to deploy
+- E2E tests
+- Separate out the components to libraries and write storybooks
 - CI/CD
 
 ## Code Structure
 
 Lambdas `apps/cocktail-menu-builder-api`
+Web `apps/cocktail-menu-builder-web`
 Infrastructure `apps/infrastructure`
 Entities `libs/domain/entities`
 Gateways `libs/domain/gateways`

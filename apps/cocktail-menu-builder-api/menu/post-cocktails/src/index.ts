@@ -20,7 +20,12 @@ export async function handler(
   
     return sendResponse<PostMenuCocktailResBody>({
       statusCode: 200,
-      body: updatedCocktail
+      body: updatedCocktail,
+      headers: {
+        // Not to be used in production if the data is sensitive
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     });
   } catch (err) {
     return sendResponse({
