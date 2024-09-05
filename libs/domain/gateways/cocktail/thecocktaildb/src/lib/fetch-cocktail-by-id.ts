@@ -21,7 +21,7 @@ export const fetchCocktailByIdFromTheCocktailDB: FetchCocktailByIdImplementor = 
     // When no cocktails are found, the API returns no body
     const cocktails = await response.json() as TheCocktailDBCocktails;
 
-    if (cocktails?.drinks?.length) {
+    if (cocktails.drinks.length) {
       return tranformCocktailToEntityModel(cocktails.drinks[0]);
     }
   } catch (error) {

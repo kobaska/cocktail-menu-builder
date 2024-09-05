@@ -12,7 +12,7 @@ export async function addCocktailToMenu(
     fetchCocktailByIdImplementor: FetchCocktailByIdImplementor;
   }
 ): Promise<Cocktail> {
-  let persistedCocktail: Cocktail | null;
+  let persistedCocktail: Pick<Cocktail, 'id' | 'name'> | null;
 
   try {
     persistedCocktail = await fetchCocktailByIdImplementor(cocktail.id);
@@ -47,4 +47,4 @@ export async function addCocktailToMenu(
 }
 
 export type AddCocktailToMenuImplementor = (cocktail: Cocktail) => Promise<Cocktail>;
-export type FetchCocktailByIdImplementor = (id: Cocktail['id']) => Promise<Cocktail | null>;
+export type FetchCocktailByIdImplementor = (id: Cocktail['id']) => Promise<Pick<Cocktail, 'id' | 'name'> | null>;

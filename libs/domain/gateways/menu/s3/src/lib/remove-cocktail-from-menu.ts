@@ -17,6 +17,7 @@ export const removeCocktailFromMenuS3: RemoveCocktailFromMenuImplementor = async
   menu.cocktails.splice(index, 1);
 
   const s3 = new S3();
+
   await s3.putObject({
     Bucket: 'cocktail-storage',
     Key: 'menu.json',

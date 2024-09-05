@@ -19,7 +19,7 @@ export const getCocktailsFromTheCocktailDB: GetCocktailsImplementor = async ({ i
   try {
     // When no cocktails are found, the API returns no body
     const cocktails = await response.json() as TheCocktailDBCocktails;
-    return cocktails?.drinks?.map(tranformCocktailToEntityModel) || [];
+    return cocktails.drinks.map(tranformCocktailToEntityModel);
   } catch (error) {
     return [];
   }
