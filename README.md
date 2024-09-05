@@ -61,6 +61,7 @@ Below commands will only build/test/deploy the affected projects. If you are run
 - E2E tests
 - Separate out the components to libraries and write storybooks
 - CI/CD
+- Secure domains and add proper cors control over domain
 
 ## Code Structure
 
