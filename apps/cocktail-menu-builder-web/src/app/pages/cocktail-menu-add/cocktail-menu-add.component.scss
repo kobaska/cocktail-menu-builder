@@ -17,7 +17,7 @@
     flex-direction: row;
     margin: 10px;
     padding: 10px;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     cursor: pointer;
 
@@ -37,4 +37,8 @@
   width: 50px;
   height: 24px;
   margin-right: 10px;
+}
+
+.cocktail-name {
+  max-width: 240px;
 }

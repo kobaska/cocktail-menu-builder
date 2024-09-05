@@ -2,7 +2,10 @@
 
 This is a cocktail menu app for restaurants to build their own cocktail menu out from a selection of cocktails from https://www.thecocktaildb.com/.
 
-You can build your own menu using the below deployed API of this application
+You test the application at
+http://www.cocktailmenubuilder-ap-southeast-2.com.s3-website-ap-southeast-2.amazonaws.com/
+
+You can test the API at
 https://8txduk3to2.execute-api.ap-southeast-2.amazonaws.com/production/cocktails
 
 ## Instructions
@@ -22,7 +25,7 @@ https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 
 ### Deployment
 
-Below commands will only build/test/deploy the affected projects. If you are running this first time, automatically it will running all the projects
+Below commands will only build/test/deploy the affected projects. If you are running this first time, add `:all` suffix to these commands e.g. `npm run test:all`
 
 1. Lint affected projects
    `npm run lint`
@@ -78,7 +81,7 @@ Helpers/Utils `libs/helpers`
 -  **Nx Monorepo**: Employed to streamline all the moving parts of the application to simplify development and deployments. If you're not familiar with Nx, the large number of files might seem overwhelming. Typically, I create a base configuration file to extend from and simplify the setup. However, for this project, I opted for the standard Nx configuration with some modifications to save time.
 - **Clean Architecture**: I only spend very little time reading up on clean architecture concepts. Attempted to split layers accordingly, but the naming conventions might not be the standard ones.
 
-Also considered creating entities as abstract classes with functions such findCocktailById as an abstract method on Cocktail entity. This way the implementors/gateways can extend the entity class and implement the abstract methods. Didn't get time to experiment to see the pros and cons. I'll give it a go over the weekend to see how that would look. I can see one con being the entity class with methods which won't be used by the use case being added in the package unneccessarily.
+- Also considered creating entities as abstract classes with functions such findCocktailById as an abstract method on Cocktail entity. This way the implementors/gateways can extend the entity class and implement the abstract methods. Didn't get time to experiment to see the pros and cons. I'll give it a go over the weekend to see how that would look. I can see one con being the entity class with methods which won't be used by the use case being added in the package unneccessarily.
 
 - **Local Serve** I have been using LocalStack for emulating AWS infrastructure locally. I found out they removed free tier recently, hence you won't be able to run it locally. Please follow the instructions provided above to deploy to your own AWS account.
 - **Lambda Structure**: Each individual lambda is split out to separate apps in here. This is totally unnecessary(so is the whole splitting of gateways and use cases) for a smaller project such as this. Purely went down this path to experiment on clean architecture and learn some different approaches in Terraform structuring. 

@@ -47,3 +47,9 @@ moved {
   from = aws_api_gateway_deployment.deployment
   to   = module.region_sydney.module.cocktail_menu_builder_api.aws_api_gateway_deployment.deployment
 }
+
+moved {
+  from = module.region_sydney.module.cocktail_menu_builder_webapp.aws_s3_bucket.cocktailmenubuilder-1
+  to   = module.region_sydney.module.cocktail_menu_builder_webapp.aws_s3_bucket.cocktailmenubuilder
+}
+

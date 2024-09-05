@@ -106,6 +106,7 @@
     "cocktail-menu-builder-api-cocktails-get",
     "cocktail-menu-builder-api-menu-get",
     "cocktail-menu-builder-api-menu-post-cocktails",
-    "cocktail-menu-builder-api-menu-delete-cocktails"
+    "cocktail-menu-builder-api-menu-delete-cocktails",
+    "cocktail-menu-builder-web"
   ]
 }

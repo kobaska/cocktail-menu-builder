@@ -6,7 +6,8 @@
   <div class="menu-list">
     <div class="menu-list-item" *ngFor="let cocktail of menu().cocktails">
       <div class="cocktail-detail" [class.printing]="printing()">
-        <div>{{ cocktail.name }}</div> <div>| {{ cocktail.price | currency }}</div>
+        <div class="cocktail-name">{{ cocktail.name }}</div> <div>
+          <span *ngIf="!printing()">|</span> {{ cocktail.price | currency }}</div>
       </div>
       <div *ngIf="!printing()" class="menu-list-item-actions">
         <button class="delete-btn" (click)="removeFromMenu(cocktail.id)">
