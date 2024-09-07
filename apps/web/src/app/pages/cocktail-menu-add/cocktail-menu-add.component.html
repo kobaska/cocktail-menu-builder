@@ -1,0 +1,40 @@
+<div class="container" [hidden]="loading()">
+  <div class="title">ADD COCKTAILS</div>
+
+  <div class="ingredient-select">
+    <label for="ingredient">Choose an ingredient:</label>
+    <select
+      name="ingredient"
+      [ngModel]="selectedIngredient"
+      (ngModelChange)="selectIngredient($event)"
+    >
+      <option *ngFor="let ingredient of ingredients()" [value]="ingredient">
+        {{ ingredient }}
+      </option>
+    </select>
+  </div>
+
+  <div class="menu-list">
+    <div class="menu-list-item" *ngFor="let cocktail of cocktails()">
+      <div class="cocktail-name">
+        {{ cocktail.name }}
+      </div>
+      <div class="menu-list-item-actions">
+        $<input
+          class="price-input"
+          type="number"
+          [(ngModel)]="cocktail.price"
+          placeholder="Price"
+        />
+        <button class="add-btn" (click)="addCocktail(cocktail)">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button [routerLink]="['../menu']" class="primary">Back to Menu</button>
+  </div>
+</div>
+
+<div [hidden]="!loading()">Loading...</div>

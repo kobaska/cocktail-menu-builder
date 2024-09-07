@@ -15,23 +15,23 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cocktail-menu-builder/adapters/controllers": [
+        "libs/adapters/controllers/src/index.ts"
+      ],
+      "@cocktail-menu-builder/adapters/gateways": [
+        "libs/adapters/gateways/src/index.ts"
+      ],
+      "@cocktail-menu-builder/application/repositories": [
+        "libs/application/repositories/src/index.ts"
+      ],
+      "@cocktail-menu-builder/application/use-cases": [
+        "libs/application/use-cases/src/index.ts"
+      ],
       "@cocktail-menu-builder/apps/cocktail-menu-builder-api/req-types": [
         "libs/apps/cocktail-menu-builder-api/req-types/src/index.ts"
       ],
-      "@cocktail-menu-builder/domain/entities/cocktail": [
-        "libs/domain/entities/cocktail/src/index.ts"
-      ],
-      "@cocktail-menu-builder/domain/gateways/cocktail/hardcoded": [
-        "libs/domain/gateways/cocktail/hardcoded/src/index.ts"
-      ],
-      "@cocktail-menu-builder/domain/gateways/cocktail/thecocktaildb": [
-        "libs/domain/gateways/cocktail/thecocktaildb/src/index.ts"
-      ],
-      "@cocktail-menu-builder/domain/gateways/menu/s3": [
-        "libs/domain/gateways/menu/s3/src/index.ts"
-      ],
-      "@cocktail-menu-builder/domain/use-cases/cocktail": [
-        "libs/domain/use-cases/cocktail/src/index.ts"
+      "@cocktail-menu-builder/domain/entities": [
+        "libs/domain/entities/src/index.ts"
       ],
       "@cocktail-menu-builder/helpers/assertions": [
         "libs/helpers/assertions/src/index.ts"

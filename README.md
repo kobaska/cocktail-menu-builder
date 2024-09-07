@@ -50,7 +50,7 @@ Below commands will only build/test/deploy the affected projects. If you are run
 - Styling Language: SCSS
 - Component Lib: Storybook
 - E2E tests: Cypress
-- API Framework: Node.js
+- API Framework: Node.js with Express
 - Language: Typescript
 - Unit Testing Framework: Jest
 - Bundler: esbuild
@@ -59,12 +59,10 @@ Below commands will only build/test/deploy the affected projects. If you are run
 
 ## Yet to complete
 
-- Local serving of lambdas (Localstack would be ideal)
 - Store Terraform state in cloud to allow to avoid clashes when more than one developer attempts to deploy
 - E2E tests
 - Separate out the components to libraries and write storybooks
 - CI/CD
-- Secure domains and add proper cors control over domain
 
 ## Code Structure
 

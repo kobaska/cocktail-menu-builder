@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "www.cocktailmenubuilder-${local.region}.com"
+  bucket_name = "www.cocktailmenu-${local.region}.com"
 }
 
 resource "aws_s3_bucket" "cocktailmenubuilder" {
@@ -67,47 +67,48 @@ resource "aws_s3_bucket_website_configuration" "website-config" {
   index_document {
     suffix = "index.html"
   }
-  error_document {
-    key = "404.html"
-  }
 }
 
 resource "aws_s3_object" "object-upload-htmls" {
-  for_each     = fileset("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/", "*.html")
+  for_each     = fileset("${path.module}/../../../../../dist/apps/web/browser/", "*.html")
   bucket       = data.aws_s3_bucket.selected-bucket.bucket
   key          = each.value
-  source       = "${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}"
+  source       = "${path.module}/../../../../../dist/apps/web/browser/${each.value}"
   content_type = "text/html"
-  etag         = filemd5("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}")
+  etag         = filemd5("${path.module}/../../../../../dist/apps/web/browser/${each.value}")
   acl          = "public-read"
+  depends_on = [aws_s3_bucket_acl.bucket-acl]
 }
 
 resource "aws_s3_object" "object-upload-js" {
-  for_each     = fileset("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/", "*.js")
+  for_each     = fileset("${path.module}/../../../../../dist/apps/web/browser/", "*.js")
   bucket       = data.aws_s3_bucket.selected-bucket.bucket
   key          = each.value
-  source       = "${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}"
+  source       = "${path.module}/../../../../../dist/apps/web/browser/${each.value}"
   content_type = "text/javascript"
-  etag         = filemd5("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}")
+  etag         = filemd5("${path.module}/../../../../../dist/apps/web/browser/${each.value}")
   acl          = "public-read"
+  depends_on = [aws_s3_bucket_acl.bucket-acl]
 }
 
 resource "aws_s3_object" "object-upload-css" {
-  for_each     = fileset("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/", "*.css")
+  for_each     = fileset("${path.module}/../../../../../dist/apps/web/browser/", "*.css")
   bucket       = data.aws_s3_bucket.selected-bucket.bucket
   key          = each.value
-  source       = "${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}"
+  source       = "${path.module}/../../../../../dist/apps/web/browser/${each.value}"
   content_type = "text/css"
-  etag         = filemd5("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}")
+  etag         = filemd5("${path.module}/../../../../../dist/apps/web/browser/${each.value}")
   acl          = "public-read"
+  depends_on = [aws_s3_bucket_acl.bucket-acl]
 }
 
 resource "aws_s3_object" "object-upload-ico" {
-  for_each     = fileset("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/", "*.ico")
+  for_each     = fileset("${path.module}/../../../../../dist/apps/web/browser/", "*.ico")
   bucket       = data.aws_s3_bucket.selected-bucket.bucket
   key          = each.value
-  source       = "${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}"
-  content_type = "	image/vnd.microsoft.icon"
-  etag         = filemd5("${path.module}/../../../../../dist/apps/cocktail-menu-builder-web/browser/${each.value}")
+  source       = "${path.module}/../../../../../dist/apps/web/browser/${each.value}"
+  content_type = "image/vnd.microsoft.icon"
+  etag         = filemd5("${path.module}/../../../../../dist/apps/web/browser/${each.value}")
   acl          = "public-read"
+  depends_on = [aws_s3_bucket_acl.bucket-acl]
 }
