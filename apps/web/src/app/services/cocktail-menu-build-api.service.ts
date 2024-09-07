@@ -16,13 +16,14 @@ import {
   tap,
   throwError,
 } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CocktailMenuBuildApiService {
-  private readonly CocktailMenuBuilderAPIUrl =
-    'https://don58np229.execute-api.ap-southeast-2.amazonaws.com/production';
+  private readonly CocktailMenuBuilderAPIUrl = environment.apiUrl;
+  
   private readonly TheCocktailDBAPIUrl =
     'https://www.thecocktaildb.com/api/json/v1/1';
   private refresh$: BehaviorSubject<null> = new BehaviorSubject(null);
