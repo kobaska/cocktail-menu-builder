@@ -5,8 +5,7 @@
   "sourceRoot": "apps/infrastructure/src",
   "tags": [],
   "implicitDependencies": [
-    "api",
-    "web"
+    "api"
   ],
   "targets": {
     "build": {

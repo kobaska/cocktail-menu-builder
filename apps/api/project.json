@@ -137,7 +137,8 @@
           }
         ],
         "parallel": false
-      }
+      },
+      "dependsOn": ["^build"]
     }
   }
 }
