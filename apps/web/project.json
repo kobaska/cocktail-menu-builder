@@ -91,6 +91,19 @@
         "staticFilePath": "dist/apps/web/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "color": true,
+        "commands": [
+          {
+            "command": "aws s3 cp dist/apps/web/browser s3://www.cocktailmenu-{args.region}.com/ --recursive --acl public-read"
+          }
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["^build"]
     }
   }
 }
