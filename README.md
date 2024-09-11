@@ -51,7 +51,7 @@ NOTE: If you are running this first time, add `:all` suffix to these commands e.
    `npm run build`
 
 4. Deploy affected projects
-   `npm run deploy`
+   `npm run deploy -- --region=ap-southeast-2`
 
 5. Use the outputted url to access the API and Web App
 
@@ -81,6 +81,7 @@ Once done repeat step 3 & 4
 - E2E tests
 - Separate out the components to libraries and write storybooks
 - CI/CD
+- Remove infrastructure depending on api and create a separate deploy script for API
 
 ## Code Structure
 

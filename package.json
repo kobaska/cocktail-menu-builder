@@ -4,13 +4,14 @@
   "license": "MIT",
   "scripts": {
     "setup:infrastructure": "nx run-many -t=initialise",
-    "deploy": "nx run-many -t=deploy",
     "lint:all": "nx run-many -t=lint",
     "lint": "nx affected:lint --fix",
     "build:all": "nx run-many -t=build",
     "build": "nx affected:build",
     "test:all": "nx run-many -t=test",
-    "test": "nx affected:test"
+    "test": "nx affected:test",
+    "deploy:all": "nx run-many -t=deploy",
+    "deploy": "nx affected -t deploy"
   },
   "private": true,
   "dependencies": {
