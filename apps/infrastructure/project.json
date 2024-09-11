@@ -3,6 +3,10 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/infrastructure/src",
+  "tags": [],
+  "implicitDependencies": [
+    "api"
+  ],
   "targets": {
     "build": {
       "executor": "nx:run-commands",
@@ -17,7 +21,8 @@
           }
         ],
         "parallel": false
-      }
+      },
+      "dependsOn": ["^build"]
     },
     "refreshModules": {
       "executor": "nx:run-commands",
@@ -37,13 +42,7 @@
       "options": {
         "planFile": "defaultplan",
         "ciMode": true
-      },
-      "dependsOn": [
-        {
-          "target": "build",
-          "dependencies": true
-        }
-      ]
+      }
     },
     "initialise": {
       "executor": "@nx-extend/terraform:init",
@@ -100,13 +99,5 @@
         "ciMode": true
       }
     }
-  },
-  "tags": [],
-  "implicitDependencies": [
-    "cocktail-menu-builder-api-cocktails-get",
-    "cocktail-menu-builder-api-menu-get",
-    "cocktail-menu-builder-api-menu-post-cocktails",
-    "cocktail-menu-builder-api-menu-delete-cocktails",
-    "cocktail-menu-builder-web"
-  ]
+  }
 }

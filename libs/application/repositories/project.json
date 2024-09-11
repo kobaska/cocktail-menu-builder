@@ -1,0 +1,29 @@
+{
+  "name": "application-repositories",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/application/repositories/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/application/repositories",
+        "main": "libs/application/repositories/src/index.ts",
+        "tsConfig": "libs/application/repositories/tsconfig.lib.json",
+        "assets": ["libs/application/repositories/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/application/repositories/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

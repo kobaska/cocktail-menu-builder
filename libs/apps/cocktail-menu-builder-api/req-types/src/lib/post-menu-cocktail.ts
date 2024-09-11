@@ -1,4 +1,4 @@
-import { Cocktail } from '@cocktail-menu-builder/domain/entities/cocktail';
+import { Cocktail } from '@cocktail-menu-builder/domain/entities';
 
 export type PostMenuCocktailReqBody = {
   id: string;

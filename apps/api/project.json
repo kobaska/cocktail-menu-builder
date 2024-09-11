@@ -1,0 +1,144 @@
+{
+  "name": "api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "package": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/api",
+        "format": ["cjs"],
+        "bundle": true,
+        "main": "apps/api/src/index.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "assets": ["apps/api/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "local-build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/api",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/api/src/local-server.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "assets": ["apps/api/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["local-build"],
+      "options": {
+        "buildTarget": "api:local-build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api:local-build:development"
+        },
+        "production": {
+          "buildTarget": "api:local-build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/api/jest.config.ts"
+      }
+    },
+    "installDeps": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/apps/api",
+        "color": true,
+        "commands": [
+          {
+            "command": "rm -f package-lock.json"
+          },
+          {
+            "command": "rm -rf node_modules"
+          },
+          {
+            "command": "npm i"
+          }
+        ],
+        "parallel": false
+      }
+    },
+    "zipFiles": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "dist/apps/api",
+        "color": true,
+        "commands": [
+          {
+            "command": "zip -rq dist.zip ."
+          }
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "color": true,
+        "commands": [
+          {
+            "command": "nx package api"
+          },
+          {
+            "command": "nx installDeps api"
+          }
+        ],
+        "parallel": false
+      },
+      "dependsOn": ["^build"]
+    }
+  }
+}

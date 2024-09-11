@@ -14,10 +14,6 @@ provider "aws" {
   region = "ap-southeast-2"
 }
 
-# provider "aws" {
-#   region = "ap-southeast-2"
-# }
-
 module "region_sydney" {
   source = "./apps"
 

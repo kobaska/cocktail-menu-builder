@@ -1,0 +1,29 @@
+<div class="container" *ngIf="!loading(); else loader">
+  <div class="title">COCKTAILS</div>
+
+  <div class="menu-list">
+    <div class="menu-list-item" *ngFor="let cocktail of menu().cocktails">
+      <div class="cocktail-detail" [class.printing]="printing()">
+        <div class="cocktail-name">{{ cocktail.name }}</div>
+        <div>
+          <span *ngIf="!printing()">|</span> {{ cocktail.price | currency }}
+        </div>
+      </div>
+      <div *ngIf="!printing()" class="menu-list-item-actions">
+        <button class="delete-btn" (click)="removeFromMenu(cocktail.id)">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!printing()" class="footer">
+    <button [routerLink]="['../add-cocktail']" class="primary">
+      Add Cocktail
+    </button>
+    <button (click)="printMenu()" class="">
+      Print <i class="fa fa-print"></i>
+    </button>
+  </div>
+</div>
+
+<ng-template #loader> Loading... </ng-template>

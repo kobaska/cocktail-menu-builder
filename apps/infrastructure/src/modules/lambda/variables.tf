@@ -51,3 +51,8 @@ variable "policy_statements" {
     }
   }
 }
+
+variable "environment" {
+  type = map(string)
+  default = {}
+}
