@@ -44,7 +44,7 @@
     "@angular/compiler-cli": "~18.2.0",
     "@angular/language-service": "~18.2.0",
     "@nx-extend/terraform": "^7.0.2",
-    "@nx/angular": "19.6.4",
+    "@nx/angular": "19.7.2",
     "@nx/cypress": "19.6.4",
     "@nx/esbuild": "19.6.4",
     "@nx/eslint": "19.6.4",
